@@ -25,6 +25,11 @@ export default function ShoppingList(props: ShoppingListProps) {
         setItems(reducedItems);
     }
 
+    const handleRemoveAllButtonFunc = () => {
+        const newItems: Item[] = [];
+        setItems(newItems);
+    }
+
     const handleAddButtonFunc = (item: Item) => {
         const newItems: Item[] = [...items];
         // @ts-ignore
@@ -82,7 +87,9 @@ export default function ShoppingList(props: ShoppingListProps) {
 
                     </div>
                 ))}
-
+                <Button variant="outlined" onClick={handleRemoveAllButtonFunc} startIcon={<DeleteIcon />}>
+                    remove all
+                </Button>
                 <Button className="button-back" onClick={handleNavigateButton}>
                     back
                 </Button>

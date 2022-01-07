@@ -8,7 +8,7 @@ import {Input} from '@mui/material';
 import {useNavigate} from 'react-router-dom';
 import './AddItem.scss';
 
-//
+
 interface AddItemProps {
     items: Item[],
     setItems: Dispatch<SetStateAction<Item[]>>
@@ -29,7 +29,7 @@ export default function AddItem(props: AddItemProps) {
             if (checkIfEmpty(inputValue)) {
                 return;
             }
-            if (checkIfAllreadyExist(inputValue)) { //aufräumen!! wie kann man das item und nicht nur den String übergeben??
+            if (checkIfAllreadyExist(inputValue)) { //aufräumen!!
                 const newItems: Item[] = [...items];
                 newItems.filter(item => item.name === inputValue)[0].quantity = newItems.filter(item => item.name === inputValue)[0].quantity + parseInt(inputNumber);
                 setItems(newItems);
@@ -42,6 +42,7 @@ export default function AddItem(props: AddItemProps) {
                 name: inputValue,
                 quantity: parseInt(inputNumber),
             };
+
             const newItems: Item[] = [...items, newItem];
             setItems(newItems);
             setInputValue("");
@@ -50,7 +51,6 @@ export default function AddItem(props: AddItemProps) {
     const checkIfEmpty: (stringInput: string) => boolean = (stringInput) => {
         return stringInput.trim() === "";
     }
-
 
     const checkIfAllreadyExist: (stringInput: string) => boolean = (stringInput) => {
         if (items.filter(item => item.name === stringInput).length === 1) {
