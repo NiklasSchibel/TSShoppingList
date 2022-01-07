@@ -28,7 +28,7 @@ export default function AddItem(props: AddItemProps) {
                 return;
             }
 
-            if (checkIfAllreadyExist(inputValue)){
+            if (checkIfAllreadyExist(inputValue)){ //aufräumen!! wie kann man das item und nicht nur den String übergeben??
                 const newItems: Item[] = [...items];
                 // @ts-ignore
                 newItems.filter(item => item.name === inputValue)[0].quantity++;
@@ -71,6 +71,7 @@ export default function AddItem(props: AddItemProps) {
 
     const onChangeHandler: ChangeEventHandler<HTMLTextAreaElement | HTMLInputElement>
         = (event) => {
+        event.preventDefault();
         setInputValue(event.target.value);
     }
 
