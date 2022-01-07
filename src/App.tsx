@@ -9,17 +9,6 @@ import {Item} from "./models/ItemModel";
 // wichtig: schreibe für jede einzelne Komponente ihr eigenes Interface, mit dieser wird der Parameter props, typisiert
 // übersichtlich wenn die porps anschließend wieder destructed werden
 
-const item1: Item = {
-    id: "1",
-    name: "Brot",
-    quantity: 2,
-}
-
-const item2: Item = {
-    id: "2",
-    name: "Bier",
-    quantity: 2,
-}
 
 interface AppProps {
 
@@ -27,22 +16,23 @@ interface AppProps {
 
 export default function App(props: AppProps) {
     const [items, setItems] = useState<Item[]>([
-        item1,
-        item2,
-    ]);
+    ]); //empty Array mit den Items für die ShoppingList
 
 
     return (
         <div className="App App-header">
             <Routes>
-                <Route path="*" element={<Main/>}/>
-                <Route path="/Main" element={<Main/>}/>
+                <Route path="*" element={<ShoppingList
+                    items={items}
+                    setItems={setItems}
+                />}/>
                 <Route path="/AddItem" element={<AddItem
                     items={items}
                     setItems={setItems}
                 />}/>
                 <Route path="/ShoppingList" element={<ShoppingList
                     items={items}
+                    setItems={setItems}
                 />}/>
             </Routes>
         </div>
