@@ -8,7 +8,7 @@ import {Input} from '@mui/material';
 import {useNavigate} from 'react-router-dom';
 import './AddItem.scss';
 
-
+//
 interface AddItemProps {
     items: Item[],
     setItems: Dispatch<SetStateAction<Item[]>>
